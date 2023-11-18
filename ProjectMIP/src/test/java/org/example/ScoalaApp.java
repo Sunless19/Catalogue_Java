@@ -1,9 +1,5 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 /**
  * Unit test for simple App.
  */
@@ -16,8 +12,8 @@ public class ScoalaApp {
         profesor.adaugaDisciplina(matematica);
 
         Nota notaMatematica = new Nota(8);
+        elev.adaugaNota(matematica, notaMatematica);
 
-        // Calcul medie finala pentru disciplina Matematica
         double medieFinalaMatematica = matematica.calculeazaMedieFinala();
         System.out.println("Medie finala la Matematica: " + medieFinalaMatematica);
     }
