@@ -30,7 +30,7 @@ public class Discipline {
     }
 
     public void setM_average() {
-        Integer sum = 0;
+        float sum = 0;
 
         for (Grade grade : m_grades) {
             sum = sum + grade.getM_value();

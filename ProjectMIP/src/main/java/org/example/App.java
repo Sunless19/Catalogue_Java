@@ -17,29 +17,25 @@ public class App {
         r.setM_name("Romana");
         Discipline j=new Discipline();
         j.setM_name("Jmekeria");
-        sergiu.addGrade(7, e);
-        sergiu.addGrade(10, e);
-        sergiu.addGrade(5, e);
-        sergiu.addGrade(8, r);
-        sergiu.addGrade(2, r);
-        sergiu.addGrade(10, j);
-        sergiu.addGrade(10, j);
-        andrei.addGrade(3, e);
-        andrei.addGrade(2, e);
-        andrei.addGrade(3, e);
-        andrei.addGrade(4, r);
-        andrei.addGrade(4, r);
-        andrei.addGrade(10, j);
-        andrei.addGrade(10, j);
-        System.out.println(sergiu.getM_name());//ok
-        //System.out.println(sergiu.getM_grades());//ok
+        disciplineList.add(e);
+        disciplineList.add(r);
+        disciplineList.add(j);
+        Professor gigi=new Professor();
+        gigi.setM_disciplines(disciplineList);
+        gigi.setM_name("Giani");
+        gigi.addGrade(7,e,sergiu);
+        gigi.addGrade(8,r,sergiu);
+        gigi.addGrade(3,j,sergiu);
+        gigi.addGrade(4,e,andrei);
+        gigi.addGrade(8,r,andrei);
+        gigi.addGrade(3,j,andrei);
+        gigi.removeGrade(3,j,sergiu);
+        gigi.addGrade(10,j,sergiu);
         for (Grade x : sergiu.getM_grades()) {
             System.out.println(x.getM_value() + " " + x.getM_date() + " " + x.getM_discipline().getM_name() + "\n");
-            if (!disciplineList.contains(x.getM_discipline())) disciplineList.add(x.getM_discipline());
         }
         for (Grade x : andrei.getM_grades()) {
             System.out.println(x.getM_value() + " " + x.getM_date() + " " + x.getM_discipline().getM_name() + "\n");
-            if (!disciplineList.contains(x.getM_discipline())) disciplineList.add(x.getM_discipline());
         }
         for (Discipline x : disciplineList) {
             x.setM_average();

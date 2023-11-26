@@ -37,6 +37,10 @@ public class Student {
         m_grades.add(x);
     }
 
+    public void removeGrade(Integer value, Discipline discipline) {
+        m_grades.removeIf(grade -> grade.getM_value().equals(value) && grade.getM_discipline().equals(discipline));
+    }
+
     private List<Grade> m_grades;
     private String m_name;
 }
