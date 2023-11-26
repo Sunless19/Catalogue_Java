@@ -1,9 +1,12 @@
 package org.example;
+
+import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 public class Discipline {
     private String m_name;
-    private ArrayList<Integer> m_note;
+    private List<Grade> m_grades;
     private float m_average;
 
     public float getM_average() {
@@ -14,28 +17,36 @@ public class Discipline {
         return m_name;
     }
 
-    public ArrayList<Integer> getM_note() {
-        return m_note;
+    public List<Grade> getM_grades() {
+        return m_grades;
     }
 
     public void setM_name(String m_name) {
         this.m_name = m_name;
     }
 
-    public void setM_note(ArrayList<Integer> m_note) {
-        this.m_note = m_note;
+    public void setM_grades(List<Grade> m_grades) {
+        this.m_grades = m_grades;
     }
 
-    public void setM_average()
-    {
-        Integer sum=0;
+    public void setM_average() {
+        Integer sum = 0;
 
-
-        for (Integer integer : m_note) {
-            sum = sum + integer;
+        for (Grade grade : m_grades) {
+            sum = sum + grade.getM_value();
         }
 
-        m_average=sum/m_note.size();
+        m_average = sum / m_grades.size();
+    }
+    public void addGrade(Integer value){
+        Grade grade=new Grade();
+        grade.setM_value(value);
+        Date current=new Date();
+        grade.setM_date(current);
+        if (this.m_grades == null) {
+            this.m_grades = new ArrayList<>();
+        }
+        this.m_grades.add(grade);
     }
 
 }
