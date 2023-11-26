@@ -38,11 +38,12 @@ public class Discipline {
 
         m_average = sum / m_grades.size();
     }
-    public void addGrade(Integer value){
+    public void addGrade(Integer value, String name){
         Grade grade=new Grade();
         grade.setM_value(value);
         Date current=new Date();
         grade.setM_date(current);
+        grade.setM_studentName(name);
         if (this.m_grades == null) {
             this.m_grades = new ArrayList<>();
         }

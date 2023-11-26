@@ -14,9 +14,6 @@ public class Student {
     public void setM_name(String m_name) {
         this.m_name = m_name;
     }
-    public void addGrade(Discipline discipline, Integer value) {
-
-    }
 
     public List<Grade> getM_grades() {
         return m_grades;
@@ -26,15 +23,14 @@ public class Student {
         this.m_grades = m_grades;
     }
 
-    public void addGrade(Integer value, String discipline){
+    public void addGrade(Integer value, Discipline discipline){
         Grade x=new Grade();
         x.setM_value(value);
         Date data=new Date();
         x.setM_date(data);
-        Discipline disciplineObj = new Discipline();
-        disciplineObj.setM_name(discipline);
-        disciplineObj.addGrade(value);
-        x.setM_discipline(disciplineObj);
+        x.setM_discipline(discipline);
+        x.setM_studentName(this.m_name);
+        discipline.addGrade(value,this.m_name);
         if (this.m_grades == null) {
             this.m_grades = new ArrayList<>();
         }

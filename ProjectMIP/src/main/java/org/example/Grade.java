@@ -9,6 +9,16 @@ public class Grade {
 
     private Discipline m_discipline;
 
+    public String getM_studentName() {
+        return m_studentName;
+    }
+
+    public void setM_studentName(String m_studentName) {
+        this.m_studentName = m_studentName;
+    }
+
+    private String m_studentName;
+
     public Discipline getM_discipline() {
         return m_discipline;
     }
