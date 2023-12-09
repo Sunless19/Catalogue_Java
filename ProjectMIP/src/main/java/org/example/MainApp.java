@@ -2,6 +2,10 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class App {
 
@@ -45,6 +49,23 @@ public class App {
             }
             System.out.println("\n");
         }
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("collegePersistenceUnit");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        entityTransaction.begin();
+        /* YOUR QUERIES HERE */
+
+        StudentEntity resultList = (StudentEntity) entityManager
+                .createNativeQuery("SELECT * FROM student WHERE id = 1", StudentEntity.class)
+                .getSingleResult();
+
+        /* YOUR QUERIES HERE */
+        entityTransaction.commit();
+
+
+        System.out.println(resultList);
+        entityManager.close();
     }
 
 }

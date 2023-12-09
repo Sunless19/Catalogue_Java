@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="myPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <!-- Adaugă aici clasele tale -->
+        <class>org.example.Discipline</class>
+        <class>org.example.Grade</class>
+        <class>org.example.Professor</class>
+        <class>org.example.Student</class>
+        <!-- Alte configurații JPA -->
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/nume_baza_date"/>
+            <property name="javax.persistence.jdbc.user" value="utilizator"/>
+            <property name="javax.persistence.jdbc.password" value="parola"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <!-- Alte proprietăți Hibernate -->
+        </properties>
+    </persistence-unit>
+</persistence>
