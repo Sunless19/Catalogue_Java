@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class App {
+public class MainApp {
 
     public static void main(String[] args) {
         Student sergiu = new Student();
@@ -35,6 +35,7 @@ public class App {
         gigi.addGrade(3,j,andrei);
         gigi.removeGrade(3,j,sergiu);
         gigi.addGrade(10,j,sergiu);
+
         for (Grade x : sergiu.getM_grades()) {
             System.out.println(x.getM_value() + " " + x.getM_date() + " " + x.getM_discipline().getM_name() + "\n");
         }
@@ -49,23 +50,31 @@ public class App {
             }
             System.out.println("\n");
         }
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("collegePersistenceUnit");
+
+
+        EntityManagerFactory entityManagerFactory =
+                Persistence.createEntityManagerFactory("collegePersistenceUnit");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-        /* YOUR QUERIES HERE */
+        // Creare și salvare entități în baza de date
 
-        StudentEntity resultList = (StudentEntity) entityManager
-                .createNativeQuery("SELECT * FROM student WHERE id = 1", StudentEntity.class)
-                .getSingleResult();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
 
-        /* YOUR QUERIES HERE */
-        entityTransaction.commit();
+        entityManager.persist(sergiu);
+        entityManager.persist(andrei);
+        entityManager.persist(gigi);
 
+// Iterați și persistați disciplinelor individual
+        for (Discipline discipline : disciplineList) {
+            entityManager.persist(discipline);
+        }
 
-        System.out.println(resultList);
+        transaction.commit();
         entityManager.close();
+        entityManagerFactory.close();
+
+
     }
 
 }

@@ -2,7 +2,16 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
+
+@Entity
 public class Professor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String m_name;
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Discipline> m_disciplines;
     public String getM_name() {
         return m_name;
     }
@@ -41,6 +50,5 @@ public class Professor {
     else System.out.println("Profesorul nu are dreptul sa modifice disciplina respectiva.\n");
     }
 
-    private String m_name;
-    private List<Discipline> m_disciplines;
+
 }

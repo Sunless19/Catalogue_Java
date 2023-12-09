@@ -30,7 +30,37 @@
       <scope>test</scope>
     </dependency>
 
-  </dependencies>
+
+
+      <!-- JPA -->
+      <dependency>
+        <groupId>jakarta.persistence</groupId>
+        <artifactId>jakarta.persistence-api</artifactId>
+        <version>3.0.0</version>
+      </dependency>
+      <!-- Hibernate -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.6.4.Final</version>
+      </dependency>
+      <!-- Driver JDBC pentru PostgreSQL -->
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.2.5</version> <!-- Verificați versiunea actuală -->
+      </dependency>
+
+    </dependencies>
+
+
+
+
+
+
+
+
+
   <build>
     <plugins>
       <plugin>
@@ -44,3 +74,4 @@
     </plugins>
   </build>
 </project>
+

@@ -3,10 +3,17 @@ package org.example;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import javax.persistence.*;
 
+@Entity
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Grade> m_grades;
+    private String m_name;
+
     public String getM_name() {
         return m_name;
     }
@@ -41,6 +48,5 @@ public class Student {
         m_grades.removeIf(grade -> grade.getM_value().equals(value) && grade.getM_discipline().equals(discipline));
     }
 
-    private List<Grade> m_grades;
-    private String m_name;
+
 }

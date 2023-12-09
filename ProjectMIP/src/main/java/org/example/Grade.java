@@ -1,12 +1,23 @@
 package org.example;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class Grade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private Integer m_value;
 
     private Date m_date;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "discipline_id")
     private Discipline m_discipline;
 
     public String getM_studentName() {

@@ -1,13 +1,23 @@
 package org.example;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-
+@Entity
 public class Discipline {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String m_name;
+    @OneToMany(mappedBy = "m_discipline", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grade> m_grades;
     private float m_average;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 
     public float getM_average() {
         return m_average;

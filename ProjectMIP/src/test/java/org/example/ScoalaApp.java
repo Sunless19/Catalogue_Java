@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple MainApp.
  */
 public class ScoalaApp {
     public static void main(String[] args) {
