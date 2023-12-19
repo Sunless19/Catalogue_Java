@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- Configurare conexiune la baza de date -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/mip</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">1q2w3e</property>
+
+        <!-- Dialectul SQL specific pentru PostgreSQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Anulare log-urile SQL -->
+        <property name="hibernate.show_sql">false</property>
+
+        <!-- Actualizare schema bazei de date -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Clasa entității -->
+        <mapping class="catalogue.CatalogueEntity"/>
+        <mapping class="catalogue.StudentEntity"/>
+        <mapping class="catalogue.ProfessorEntity"/>
+        <mapping class="catalogue.GradeEntity"/>
+        <mapping class="catalogue.CatalogueEntityPK"/>
+        <!-- Adaugă și alte clase de entități aici, dacă este cazul -->
+
+        <mapping package="catalogue" />
+    </session-factory>
+</hibernate-configuration>
